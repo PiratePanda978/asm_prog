@@ -5,27 +5,30 @@ data ends
 code segment
 assume cs:code,ds:data
 start:	mov ax,data
-	mov ds,ax
-	
-	mov ch,04h
-	
-up2:	mov cl,04h
-	lea si,array
+mov ds,ax
 
-up1:	mov al,[si]
-	mov bl,[si+1]
-	cmp al,bl
-	jc down
-	mov dl,[si+1]
-	xchg [si],dl
-	mov [si+1],dl
-	
-down:	inc si
-	dec cl
-	jnz up1
-	dec ch
-	jnz up2
+mov ch,04h
 
-	int 3
-	code ends
-	end start
+up2:	
+mov cl,04h
+lea si,array
+
+up1:	
+mov al,[si]
+mov bl,[si+1]
+cmp al,bl
+jc down
+mov dl,[si+1]
+xchg [si],dl
+mov [si+1],dl
+
+down:	
+inc si
+dec cl
+jnz up1
+dec ch
+jnz up2
+
+int 3
+code ends
+end start
