@@ -9,7 +9,7 @@ mov al,57h
 mov ah,al
 and al,0fh
 mov cl,4h
-shr ah,cl
+ror ah,cl
 and ah,0fh
 add ax,3030h
 hlt
