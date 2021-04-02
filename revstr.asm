@@ -1,0 +1,24 @@
+ASSUME CS:CODE,DS:DATA     
+DATA SEGMENT        
+STRING  DB 'GOOD MORNING$'        
+REV DB 0FH DUP(?)
+DATA ENDS
+CODE SEGMENT
+START:   
+MOV AX,DATA        
+MOV DS,AX        
+LEA SI,STRING         
+MOV CL,0FH        
+LEA DI,REV        
+ADD DI,0FH       
+UP:
+MOV AL,[SI]        
+MOV [DI],AL        
+INC SI        
+DEC DI        
+LOOP UP     
+MOV AH,4CH        
+INT 21H
+CODE ENDS
+END START 
+END
